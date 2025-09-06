@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { ArrowDown, Download } from 'lucide-react'
+import { ArrowDown } from 'lucide-react'
 import { personalInfo } from '@/lib/data'
 import { TimelineVisual } from '@/components/timeline-visual'
 
@@ -58,30 +58,6 @@ export function HeroSection() {
           >
             {personalInfo.tagline}
           </motion.p>
-
-          {/* CTA Buttons */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1, duration: 0.8 }}
-            className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16"
-          >
-            <a
-              href="/resume.pdf"
-              download
-              className="inline-flex items-center px-8 py-3 bg-primary-600 hover:bg-primary-700 text-white rounded-lg font-medium transition-colors shadow-lg hover:shadow-xl"
-            >
-              <Download className="h-5 w-5 mr-2" />
-              Download Resume
-            </a>
-            
-            <button
-              onClick={scrollToAbout}
-              className="inline-flex items-center px-8 py-3 border-2 border-primary-600 text-primary-600 dark:text-primary-400 hover:bg-primary-50 dark:hover:bg-primary-900/20 rounded-lg font-medium transition-colors"
-            >
-              View My Work
-            </button>
-          </motion.div>
 
           {/* Timeline Visualization */}
           <motion.div

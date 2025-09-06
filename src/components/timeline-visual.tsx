@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion'
 
-// Timeline data combining experience and education (ordered left to right: oldest to newest)
+// Timeline events with alternating positions
 const timelineEvents = [
   {
     id: "vit-btech",
@@ -10,7 +10,8 @@ const timelineEvents = [
     organization: "VIT",
     period: "2016-2020",
     type: "education",
-    year: 2020
+    year: 2020,
+    position: "above"
   },
   {
     id: "amazon-intern",
@@ -18,133 +19,193 @@ const timelineEvents = [
     organization: "Amazon",
     period: "Feb-Jul 2020",
     type: "experience",
-    year: 2020
+    year: 2020,
+    position: "below"
   },
   {
     id: "amazon-sde",
     title: "Software Development Engineer",
     organization: "Amazon",
-    period: "Jul 2020-Jun 2022",
+    period: "2020-2022",
     type: "experience",
-    year: 2022
+    year: 2021,
+    position: "above"
   },
   {
     id: "jio",
     title: "Software Engineer",
     organization: "Reliance Jio",
-    period: "Aug 2022-Aug 2023",
+    period: "2022-2023",
     type: "experience",
-    year: 2023
+    year: 2022,
+    position: "below"
   },
   {
-    id: "umassamherst-ms",
+    id: "umass-ms",
     title: "MS Computer Science",
     organization: "UMass Amherst",
     period: "2023-2025",
     type: "education",
-    year: 2024
+    year: 2024,
+    position: "above"
   },
   {
-    id: "mindful-performance",
+    id: "mindful",
     title: "Software Developer Intern",
     organization: "MindfulPerformance",
     period: "Jun-Aug 2024",
     type: "experience",
-    year: 2024
+    year: 2024,
+    position: "below"
   }
 ]
 
 export function TimelineVisual() {
+  // Get unique years for the timeline
+  const uniqueYears = [...new Set(timelineEvents.map(e => e.year))].sort((a, b) => a - b)
+  
   return (
-    <div className="w-full max-w-6xl mx-auto">
+    <div className="w-full max-w-5xl mx-auto px-4">
       <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 1.5, duration: 1 }}
-        className="relative py-20"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.5, duration: 0.8 }}
+        className="relative"
       >
-        {/* Timeline container */}
-        <div className="relative flex items-center justify-between">
-          {timelineEvents.map((event, index) => {
-            const isEducation = event.type === 'education'
-            const isAbove = index % 2 === 0
-            
-            return (
-              <div key={event.id} className="relative flex-1 flex flex-col items-center">
-                {/* Event card - alternating above/below */}
-                <motion.div 
-                  initial={{ opacity: 0, y: isAbove ? -30 : 30 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 1.8 + (index * 0.2), duration: 0.6 }}
-                  className={isAbove ? 'mb-20' : 'mt-20 order-3'}
+        {/* Main timeline container */}
+        <div className="relative h-[240px] flex items-center justify-center">
+          
+          {/* Horizontal timeline line */}
+          <motion.div 
+            initial={{ scaleX: 0 }}
+            animate={{ scaleX: 1 }}
+            transition={{ delay: 0.8, duration: 1 }}
+            className="absolute w-full h-0.5 bg-gray-300 dark:bg-gray-600 top-1/2 transform -translate-y-1/2"
+          />
+
+          {/* Timeline with events */}
+          <div className="relative w-full flex justify-between items-center">
+            {timelineEvents.map((event, index) => {
+              const isAbove = index % 2 === 0
+              const position = (index / (timelineEvents.length - 1)) * 100
+              
+              return (
+                <div 
+                  key={event.id} 
+                  className="absolute flex flex-col items-center"
+                  style={{ left: `${position}%`, transform: 'translateX(-50%)' }}
                 >
-                  <div className={`bg-white dark:bg-gray-800 rounded-lg p-4 shadow-lg border border-gray-200 dark:border-gray-700 min-w-40 max-w-44 mx-auto`}>
-                    <h4 className="text-sm font-bold text-gray-900 dark:text-white mb-2 leading-tight break-words">
-                      {event.title}
-                    </h4>
-                    <p className={`text-sm font-medium mb-2 leading-tight break-words ${
-                      isEducation ? 'text-green-600 dark:text-green-400' : 'text-yellow-600 dark:text-yellow-400'
-                    }`}>
-                      {event.organization}
-                    </p>
-                    <p className="text-xs text-gray-500 dark:text-gray-400 leading-tight">
-                      {event.period}
-                    </p>
+                  {/* Event box */}
+                  <motion.div
+                    initial={{ opacity: 0, y: isAbove ? 20 : -20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 1 + (index * 0.15), duration: 0.6 }}
+                    className={isAbove ? "absolute bottom-[25px]" : "absolute top-[25px]"}
+                  >
+                    {isAbove && (
+                      <>
+                        <div className={`bg-white dark:bg-gray-800 rounded-lg px-4 py-3 shadow-lg border-2 ${
+                          event.type === 'education' 
+                            ? 'border-green-200 dark:border-green-700' 
+                            : 'border-yellow-200 dark:border-yellow-700'
+                        } min-w-[140px] max-w-[160px] text-center`}>
+                          <p className="text-xs font-bold text-gray-900 dark:text-white">{event.title}</p>
+                          <p className={`text-xs font-medium mt-1 ${
+                            event.type === 'education' 
+                              ? 'text-green-600 dark:text-green-400' 
+                              : 'text-yellow-600 dark:text-yellow-400'
+                          }`}>
+                            {event.organization}
+                          </p>
+                          <p className="text-[10px] text-gray-500 dark:text-gray-400 mt-1">{event.period}</p>
+                        </div>
+                        {/* Connector line */}
+                        <div className={`w-0.5 h-4 ${
+                          event.type === 'education'
+                            ? 'bg-green-300 dark:bg-green-600'
+                            : 'bg-yellow-300 dark:bg-yellow-600'
+                        } mx-auto`} />
+                      </>
+                    )}
+                    
+                    {!isAbove && (
+                      <>
+                        {/* Connector line */}
+                        <div className={`w-0.5 h-4 ${
+                          event.type === 'education'
+                            ? 'bg-green-300 dark:bg-green-600'
+                            : 'bg-yellow-300 dark:bg-yellow-600'
+                        } mx-auto`} />
+                        <div className={`bg-white dark:bg-gray-800 rounded-lg px-4 py-3 shadow-lg border-2 ${
+                          event.type === 'education' 
+                            ? 'border-green-200 dark:border-green-700' 
+                            : 'border-yellow-200 dark:border-yellow-700'
+                        } min-w-[140px] max-w-[160px] text-center`}>
+                          <p className="text-xs font-bold text-gray-900 dark:text-white">{event.title}</p>
+                          <p className={`text-xs font-medium mt-1 ${
+                            event.type === 'education' 
+                              ? 'text-green-600 dark:text-green-400' 
+                              : 'text-yellow-600 dark:text-yellow-400'
+                          }`}>
+                            {event.organization}
+                          </p>
+                          <p className="text-[10px] text-gray-500 dark:text-gray-400 mt-1">{event.period}</p>
+                        </div>
+                      </>
+                    )}
+                  </motion.div>
+
+                  {/* Timeline dot */}
+                  <motion.div
+                    initial={{ scale: 0 }}
+                    animate={{ scale: 1 }}
+                    transition={{ delay: 0.9 + (index * 0.1), duration: 0.4 }}
+                    className={`w-3 h-3 ${
+                      event.type === 'education'
+                        ? 'bg-green-500 dark:bg-green-400'
+                        : 'bg-yellow-500 dark:bg-yellow-400'
+                    } rounded-full z-10 border-2 border-white dark:border-gray-800`}
+                  />
+                </div>
+              )
+            })}
+          </div>
+
+          {/* Year markers */}
+          <div className="absolute w-full flex justify-between items-center top-1/2 transform -translate-y-1/2 pointer-events-none">
+            {uniqueYears.map((year, index) => {
+              const position = uniqueYears.length === 1 ? 50 : (index / (uniqueYears.length - 1)) * 100
+              return (
+                <motion.div
+                  key={year}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 1.5 + (index * 0.1), duration: 0.6 }}
+                  className="absolute"
+                  style={{ left: `${position}%`, transform: 'translateX(-50%)' }}
+                >
+                  <div className="px-2 py-0.5 bg-white dark:bg-gray-800 text-[10px] font-semibold text-gray-600 dark:text-gray-400 rounded">
+                    {year}
                   </div>
                 </motion.div>
-
-                {/* Vertical connector line - alternating direction */}
-                <motion.div 
-                  initial={{ opacity: 0, scaleY: 0 }}
-                  animate={{ opacity: 1, scaleY: 1 }}
-                  transition={{ delay: 2 + (index * 0.1), duration: 0.4 }}
-                  className={`w-1 h-20 ${
-                    isEducation 
-                      ? 'bg-gradient-to-b from-green-500 to-green-700 dark:from-green-400 dark:to-green-600' 
-                      : 'bg-gradient-to-b from-yellow-500 to-yellow-600 dark:from-yellow-400 dark:to-yellow-500'
-                  } shadow-sm absolute ${isAbove ? 'top-0 transform -translate-y-full' : 'bottom-0 transform translate-y-full order-2'}`}
-                ></motion.div>
-
-                {/* Timeline segments and year */}
-                <div className="flex items-center w-full order-2">
-                  {/* Left line segment */}
-                  {index > 0 && (
-                    <div className="flex-1 h-1 bg-gradient-to-r from-gray-400 to-gray-500 dark:from-gray-500 dark:to-gray-400"></div>
-                  )}
-                  
-                  {/* Year badge - breaks the line */}
-                  <motion.div 
-                    initial={{ opacity: 0, scale: 0 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ delay: 2.2 + (index * 0.1), duration: 0.4 }}
-                    className="px-4 py-2 bg-white dark:bg-gray-800 border-2 border-gray-300 dark:border-gray-600 rounded-full text-sm font-bold text-gray-700 dark:text-gray-300 shadow-md z-10 mx-2"
-                  >
-                    {event.year}
-                  </motion.div>
-                  
-                  {/* Right line segment */}
-                  {index < timelineEvents.length - 1 && (
-                    <div className="flex-1 h-1 bg-gradient-to-r from-gray-500 to-gray-400 dark:from-gray-400 dark:to-gray-500"></div>
-                  )}
-                </div>
-              </div>
-            )
-          })}
+              )
+            })}
+          </div>
         </div>
-        
+
         {/* Legend */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 3.5, duration: 0.8 }}
-          className="flex justify-center items-center gap-6 mt-12 text-sm"
+          transition={{ delay: 2.2, duration: 0.8 }}
+          className="flex justify-center items-center gap-6 text-xs mt-4"
         >
           <div className="flex items-center gap-2">
-            <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
+            <div className="w-2.5 h-2.5 rounded-full bg-yellow-500"></div>
             <span className="text-gray-600 dark:text-gray-400">Experience</span>
           </div>
           <div className="flex items-center gap-2">
-            <div className="w-3 h-3 rounded-full bg-green-500"></div>
+            <div className="w-2.5 h-2.5 rounded-full bg-green-500"></div>
             <span className="text-gray-600 dark:text-gray-400">Education</span>
           </div>
         </motion.div>

@@ -9,7 +9,7 @@ export const personalInfo = {
   linkedin: "https://www.linkedin.com/in/ganatejaakula/",
   github: "https://github.com/ganatejadragneel",
   tagline: "Building scalable systems that impact millions of users worldwide",
-  bio: "Experienced software engineer with 3+ years building high-performance systems at Amazon and Reliance Jio. Recently completed MS in Computer Science from UMass Amherst. Passionate about AI integration, system optimization, and creating meaningful technological impact."
+  bio: "I'm an experienced software engineer with 3+ years building high-performance systems at Amazon and Reliance Jio. I recently completed my MS in Computer Science from UMass Amherst. I'm passionate about AI integration, system optimization, and creating meaningful technological impact."
 };
 
 export const experiences: Experience[] = [
@@ -19,10 +19,10 @@ export const experiences: Experience[] = [
     position: "Software Developer Intern",
     period: "June 2024 – August 2024",
     description: [
-      "Single-handedly built complete MVP using React, NextJS, Express, and MongoDB",
-      "Developed platform connecting athletes with coaches through web-integrated video calls",
-      "Implemented custom recommendation algorithms for user matching",
-      "Achieved rapid market validation with 50+ paying customers within 2 weeks of deployment"
+      "Single-handedly built complete MVP using React, NextJS, Express, and MongoDB.",
+      "Developed platform connecting athletes with coaches through web-integrated video calls.",
+      "Implemented custom recommendation algorithms for user matching.",
+      "Achieved rapid market validation with 50+ paying customers within 2 weeks of deployment."
     ],
     technologies: ["React", "Next.js", "Express", "MongoDB", "Netlify", "Railway"],
     achievements: [
@@ -37,11 +37,11 @@ export const experiences: Experience[] = [
     position: "Software Engineer",
     period: "August 2022 – August 2023",
     description: [
-      "Developed RESTful APIs for voucher upload, search, and cancellation features for JioMart enterprise platform",
-      "Implemented Redis caching solutions achieving 70% improvement in data retrieval times",
-      "Led implementation of comprehensive logging system using ELK stack, managing 3 interns",
-      "Built API documentation portal using React and Python for enhanced developer experience",
-      "Managed cloud infrastructure with Docker, Kubernetes on Azure AKS, and Kafka messaging"
+      "Developed RESTful APIs for voucher upload, search, and cancellation features for JioMart enterprise platform.",
+      "Implemented Redis caching solutions achieving 70% improvement in data retrieval times.",
+      "Led implementation of comprehensive logging system using ELK stack, managing 3 interns.",
+      "Built API documentation portal using React and Python for enhanced developer experience.",
+      "Managed cloud infrastructure with Docker, Kubernetes on Azure AKS, and Kafka messaging."
     ],
     technologies: ["Java", "Spring Boot", "Redis", "ELK Stack", "React", "Python", "Docker", "Kubernetes", "Azure", "Kafka"],
     achievements: [
@@ -56,10 +56,10 @@ export const experiences: Experience[] = [
     position: "Software Development Engineer",
     period: "July 2020 – June 2022",
     description: [
-      "Led development of comprehensive PDF to EPUB conversion system using C++ and Ruby, taking ownership of 95% of the project codebase",
-      "Enhanced Kindle's comic book support from 95% to 99% coverage through collaboration with Comixology team",
-      "Built end-to-end eBook conversion workflows using AWS Step Functions orchestrating AWS EC2 container tasks, storing multiple eBook formats in Amazon S3, and handling new publisher requests via Amazon SQS",
-      "Managed and mentored an intern, providing guidance on technical challenges and large-scale software development"
+      "Led development of comprehensive PDF to EPUB conversion system using C++ and Ruby, taking ownership of 95% of the project codebase.",
+      "Enhanced Kindle's comic book support from 95% to 99% coverage through collaboration with Comixology team.",
+      "Built end-to-end eBook conversion workflows using AWS Step Functions orchestrating AWS EC2 container tasks, storing multiple eBook formats in Amazon S3, and handling new publisher requests via Amazon SQS.",
+      "Managed and mentored an intern, providing guidance on technical challenges and large-scale software development."
     ],
     technologies: ["C++", "Ruby", "Java", "AWS", "Linux"],
     achievements: [
@@ -74,8 +74,8 @@ export const experiences: Experience[] = [
     position: "Software Development Engineer Intern",
     period: "February 2020 – July 2020",
     description: [
-      "Worked on critical consumer-facing systems responsible for converting digital content for millions of Kindle users",
-      "Gained foundational experience in building systems at massive scale with high reliability standards"
+      "Worked on critical consumer-facing systems responsible for converting digital content for millions of Kindle users.",
+      "Gained foundational experience in building systems at massive scale with high reliability standards."
     ],
     technologies: ["C++", "Java", "AWS"],
     achievements: []
