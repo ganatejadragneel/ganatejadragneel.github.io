@@ -1,36 +1,88 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Gana Teja Akula - Portfolio Website
 
-## Getting Started
+A modern, responsive portfolio website built with Next.js, TypeScript, and Tailwind CSS. Features a clean design with dark/light mode support, smooth animations, and optimized performance.
 
-First, run the development server:
+## 🚀 Features
 
+- **Modern Tech Stack**: Built with Next.js 14, TypeScript, and Tailwind CSS
+- **Responsive Design**: Mobile-first approach with perfect mobile experience  
+- **Dark/Light Mode**: Toggle between themes with smooth transitions
+- **Performance Optimized**: Fast loading times and 90+ Lighthouse scores
+- **SEO Optimized**: Complete meta tags and OpenGraph support
+- **Blog Integration**: Technical blog with markdown support
+- **Smooth Animations**: Framer Motion for engaging user experience
+- **Accessibility**: Full WCAG compliance and keyboard navigation
+
+## 🛠️ Tech Stack
+
+- **Framework**: Next.js 14 with App Router
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS
+- **Animations**: Framer Motion
+- **Icons**: Lucide React
+- **Deployment**: GitHub Pages with GitHub Actions
+- **Blog**: Markdown with syntax highlighting
+
+## 🚦 Getting Started
+
+### Prerequisites
+
+- Node.js 18.0.0 or higher
+- npm 8.6.0 or higher
+
+### Installation
+
+1. Clone the repository
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/ganatejadragneel/portfolio-new.git
+cd portfolio-new
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Install dependencies
+```bash
+npm install
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+3. Start the development server
+```bash
+npm run dev
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+4. Open [http://localhost:3000](http://localhost:3000) to view it in the browser
 
-## Learn More
+### Building for Production
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+npm run build
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+This will create an optimized production build in the `out` directory.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 📝 Customization
 
-## Deploy on Vercel
+### Personal Information
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Update your personal information in `src/lib/data.ts`
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### Experience & Projects
+
+Add your experience and projects in the same file
+
+### Blog Posts
+
+Add blog posts in `src/app/blog/[slug]/page.tsx` or integrate with a CMS
+
+## 🚀 Deployment
+
+The site is configured for deployment on GitHub Pages using GitHub Actions.
+
+### Setup
+
+1. Push your code to a GitHub repository
+2. Go to repository Settings > Pages
+3. Set Source to "GitHub Actions"
+4. Push to main branch to trigger deployment
+
+---
+
+Built with ❤️ by [Gana Teja Akula](https://github.com/ganatejadragneel)
