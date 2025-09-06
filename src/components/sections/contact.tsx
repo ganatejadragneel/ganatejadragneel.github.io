@@ -2,8 +2,9 @@
 
 import { motion } from 'framer-motion'
 import { useState } from 'react'
-import { Mail, MapPin, Phone, Github, Linkedin, Anchor, Ship, Compass, Flag } from 'lucide-react'
+import { Mail, MapPin, Phone, Anchor, Ship, Compass, Flag } from 'lucide-react'
 import { personalInfo } from '@/lib/data'
+import { SocialLinks } from '@/components/ui/social-links'
 
 export function ContactSection() {
   const [formData, setFormData] = useState({
@@ -247,30 +248,7 @@ export function ContactSection() {
                   <Flag className="h-5 w-5 mr-2" />
                   Join the Crew
                 </h4>
-                <div className="flex space-x-4">
-                  <motion.a
-                    href={personalInfo.github}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    whileHover={{ scale: 1.1, rotate: 360 }}
-                    whileTap={{ scale: 0.9 }}
-                    className="p-3 bg-gradient-to-br from-gray-800 to-black rounded-lg hover:from-gray-700 hover:to-gray-900 transition-all group shadow-lg"
-                    aria-label="GitHub Profile"
-                  >
-                    <Github className="h-6 w-6 text-white" />
-                  </motion.a>
-                  <motion.a
-                    href={personalInfo.linkedin}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    whileHover={{ scale: 1.1, rotate: 360 }}
-                    whileTap={{ scale: 0.9 }}
-                    className="p-3 bg-gradient-to-br from-blue-600 to-blue-800 rounded-lg hover:from-blue-500 hover:to-blue-700 transition-all group shadow-lg"
-                    aria-label="LinkedIn Profile"
-                  >
-                    <Linkedin className="h-6 w-6 text-white" />
-                  </motion.a>
-                </div>
+                <SocialLinks variant="contact" />
               </div>
 
               {/* Bounty */}

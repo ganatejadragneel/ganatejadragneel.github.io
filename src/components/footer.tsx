@@ -1,9 +1,10 @@
 'use client'
 
 import Link from 'next/link'
-import { Github, Linkedin, Mail, Zap, Star, Flame } from 'lucide-react'
+import { Zap, Star, Flame, Mail } from 'lucide-react'
 import { personalInfo } from '@/lib/data'
 import { motion } from 'framer-motion'
+import { SocialLinks } from '@/components/ui/social-links'
 
 export function Footer() {
   return (
@@ -141,83 +142,7 @@ export function Footer() {
               <Flame className="h-5 w-5 mr-2 animate-pulse" />
               Power Links
             </h3>
-            <div className="flex space-x-4">
-              <motion.a
-                href={personalInfo.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                whileHover={{ scale: 1.2, rotate: 360 }}
-                whileTap={{ scale: 0.9 }}
-                className="relative p-3 bg-gradient-to-br from-yellow-500 to-orange-600 rounded-lg shadow-lg hover:shadow-yellow-400/50 transition-all group"
-                aria-label="GitHub Profile"
-              >
-                <Github className="h-6 w-6 text-white" />
-                <span className="absolute -top-8 left-1/2 transform -translate-x-1/2 text-xs font-bold text-cyan-300 opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
-                  Git-HA! 7000
-                </span>
-                <motion.div
-                  className="absolute inset-0 rounded-lg"
-                  animate={{
-                    boxShadow: [
-                      '0 0 20px rgba(255, 200, 0, 0)',
-                      '0 0 20px rgba(255, 200, 0, 0.5)',
-                      '0 0 20px rgba(255, 200, 0, 0)',
-                    ]
-                  }}
-                  transition={{ duration: 2, repeat: Infinity }}
-                />
-              </motion.a>
-              
-              <motion.a
-                href={personalInfo.linkedin}
-                target="_blank"
-                rel="noopener noreferrer"
-                whileHover={{ scale: 1.2, rotate: 360 }}
-                whileTap={{ scale: 0.9 }}
-                className="relative p-3 bg-gradient-to-br from-blue-500 to-cyan-600 rounded-lg shadow-lg hover:shadow-blue-400/50 transition-all group"
-                aria-label="LinkedIn Profile"
-              >
-                <Linkedin className="h-6 w-6 text-white" />
-                <span className="absolute -top-8 left-1/2 transform -translate-x-1/2 text-xs font-bold text-yellow-300 opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
-                  Link-KEN! 6500
-                </span>
-                <motion.div
-                  className="absolute inset-0 rounded-lg"
-                  animate={{
-                    boxShadow: [
-                      '0 0 20px rgba(0, 150, 255, 0)',
-                      '0 0 20px rgba(0, 150, 255, 0.5)',
-                      '0 0 20px rgba(0, 150, 255, 0)',
-                    ]
-                  }}
-                  transition={{ duration: 2, repeat: Infinity, delay: 0.5 }}
-                />
-              </motion.a>
-              
-              <motion.a
-                href={`mailto:${personalInfo.email}`}
-                whileHover={{ scale: 1.2, rotate: 360 }}
-                whileTap={{ scale: 0.9 }}
-                className="relative p-3 bg-gradient-to-br from-red-500 to-pink-600 rounded-lg shadow-lg hover:shadow-red-400/50 transition-all group"
-                aria-label="Email"
-              >
-                <Mail className="h-6 w-6 text-white" />
-                <span className="absolute -top-8 left-1/2 transform -translate-x-1/2 text-xs font-bold text-green-300 opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
-                  KA-MAIL! 8000
-                </span>
-                <motion.div
-                  className="absolute inset-0 rounded-lg"
-                  animate={{
-                    boxShadow: [
-                      '0 0 20px rgba(255, 0, 100, 0)',
-                      '0 0 20px rgba(255, 0, 100, 0.5)',
-                      '0 0 20px rgba(255, 0, 100, 0)',
-                    ]
-                  }}
-                  transition={{ duration: 2, repeat: Infinity, delay: 1 }}
-                />
-              </motion.a>
-            </div>
+            <SocialLinks variant="footer" />
             
             {/* Power Level Display */}
             <motion.div 

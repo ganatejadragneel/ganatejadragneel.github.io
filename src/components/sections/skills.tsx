@@ -3,6 +3,8 @@
 import { motion } from 'framer-motion'
 import { Code, Database, Cloud, Brain, Wrench } from 'lucide-react'
 import { skills } from '@/lib/data'
+import { SectionHeader } from '@/components/ui/section-header'
+import { styles, cn } from '@/lib/styles'
 
 const categoryIcons = {
   languages: Code,
@@ -38,23 +40,12 @@ export function SkillsSection() {
   }, {} as Record<string, typeof skills>)
 
   return (
-    <section id="skills" className="py-20 bg-gray-50 dark:bg-gray-800">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-          className="text-center mb-16"
-        >
-          <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-4">
-            Technical Skills
-          </h2>
-          <div className="w-20 h-1 bg-primary-600 mx-auto mb-8"></div>
-          <p className="text-lg text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
-            Expertise across full-stack development, cloud infrastructure, and cutting-edge AI technologies
-          </p>
-        </motion.div>
+    <section id="skills" className={cn("py-20", styles.background.section)}>
+      <div className={styles.container.default}>
+        <SectionHeader 
+          title="Technical Skills"
+          subtitle="Expertise across full-stack development, cloud infrastructure, and cutting-edge AI technologies"
+        />
 
         <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-8">
           {Object.entries(skillsByCategory).map(([category, categorySkills], index) => {

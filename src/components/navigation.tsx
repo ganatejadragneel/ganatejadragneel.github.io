@@ -2,10 +2,10 @@
 
 import Link from 'next/link'
 import { useState, useEffect } from 'react'
-import { Menu, X, Github, Linkedin, Mail, Zap, Star } from 'lucide-react'
+import { Menu, X, Zap, Star } from 'lucide-react'
 import { ThemeToggle } from './theme-toggle'
-import { personalInfo } from '@/lib/data'
 import { motion } from 'framer-motion'
+import { SocialLinks } from '@/components/ui/social-links'
 
 const navItems = [
   { href: '/', label: 'Home', power: '9000' },
@@ -75,45 +75,7 @@ export function Navigation() {
             </Link>
             
             {/* Social Links with DBZ Power Level */}
-            <div className="hidden md:flex items-center space-x-3">
-              <motion.a
-                href={personalInfo.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                whileHover={{ scale: 1.2, rotate: 360 }}
-                className="p-2 text-yellow-300 hover:text-yellow-100 transition-colors relative group"
-                aria-label="GitHub Profile"
-              >
-                <Github className="h-5 w-5" />
-                <span className="absolute -top-8 left-1/2 transform -translate-x-1/2 text-xs font-bold text-yellow-300 opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
-                  Power: 7000
-                </span>
-              </motion.a>
-              <motion.a
-                href={personalInfo.linkedin}
-                target="_blank"
-                rel="noopener noreferrer"
-                whileHover={{ scale: 1.2, rotate: 360 }}
-                className="p-2 text-yellow-300 hover:text-yellow-100 transition-colors relative group"
-                aria-label="LinkedIn Profile"
-              >
-                <Linkedin className="h-5 w-5" />
-                <span className="absolute -top-8 left-1/2 transform -translate-x-1/2 text-xs font-bold text-yellow-300 opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
-                  Power: 6500
-                </span>
-              </motion.a>
-              <motion.a
-                href={`mailto:${personalInfo.email}`}
-                whileHover={{ scale: 1.2, rotate: 360 }}
-                className="p-2 text-yellow-300 hover:text-yellow-100 transition-colors relative group"
-                aria-label="Email"
-              >
-                <Mail className="h-5 w-5" />
-                <span className="absolute -top-8 left-1/2 transform -translate-x-1/2 text-xs font-bold text-yellow-300 opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
-                  Power: 8000
-                </span>
-              </motion.a>
-            </div>
+            <SocialLinks variant="dbz" showPowerLevels />
           </div>
 
           {/* Desktop Navigation with Power Levels */}
@@ -184,32 +146,8 @@ export function Navigation() {
               ))}
               
               {/* Mobile Social Links */}
-              <div className="flex items-center justify-center space-x-4 pt-4 pb-2 border-t border-gray-200 dark:border-gray-800 mt-4">
-                <a
-                  href={personalInfo.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="p-2 text-gray-600 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
-                  aria-label="GitHub Profile"
-                >
-                  <Github className="h-5 w-5" />
-                </a>
-                <a
-                  href={personalInfo.linkedin}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="p-2 text-gray-600 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
-                  aria-label="LinkedIn Profile"
-                >
-                  <Linkedin className="h-5 w-5" />
-                </a>
-                <a
-                  href={`mailto:${personalInfo.email}`}
-                  className="p-2 text-gray-600 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
-                  aria-label="Email"
-                >
-                  <Mail className="h-5 w-5" />
-                </a>
+              <div className="pt-4 pb-2 border-t border-gray-200 dark:border-gray-800 mt-4">
+                <SocialLinks variant="default" className="justify-center" />
               </div>
             </div>
           </motion.div>

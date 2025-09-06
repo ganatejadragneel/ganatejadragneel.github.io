@@ -4,8 +4,7 @@ import { motion } from 'framer-motion'
 import { ArrowLeft, Calendar, Clock, Tag, Share2 } from 'lucide-react'
 import Link from 'next/link'
 import ReactMarkdown from 'react-markdown'
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
-import { oneDark } from 'react-syntax-highlighter/dist/cjs/styles/prism'
+import { LazyCodeBlock } from './syntax-highlighter'
 
 interface BlogPostProps {
   post: {
@@ -125,15 +124,13 @@ export function BlogPost({ post }: BlogPostProps) {
                 code({ inline, className, children, ...props }: any) {
                   const match = /language-(\w+)/.exec(className || '')
                   return !inline && match ? (
-                    <SyntaxHighlighter
-                      style={oneDark}
+                    <LazyCodeBlock
                       language={match[1]}
-                      PreTag="div"
                       className="rounded-lg"
                       {...props}
                     >
                       {String(children).replace(/\n$/, '')}
-                    </SyntaxHighlighter>
+                    </LazyCodeBlock>
                   ) : (
                     <code className={className} {...props}>
                       {children}
