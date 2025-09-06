@@ -2,18 +2,19 @@
 
 import Link from 'next/link'
 import { useState, useEffect } from 'react'
-import { Menu, X, Github, Linkedin, Mail } from 'lucide-react'
+import { Menu, X, Github, Linkedin, Mail, Zap, Star } from 'lucide-react'
 import { ThemeToggle } from './theme-toggle'
 import { personalInfo } from '@/lib/data'
+import { motion } from 'framer-motion'
 
 const navItems = [
-  { href: '/', label: 'Home' },
-  { href: '#about', label: 'About' },
-  { href: '#experience', label: 'Experience' },
-  { href: '#projects', label: 'Projects' },
-  { href: '#skills', label: 'Skills' },
-  { href: '/blog', label: 'Blog' },
-  { href: '#contact', label: 'Contact' }
+  { href: '/', label: 'Home', power: '9000' },
+  { href: '#about', label: 'About', power: '8500' },
+  { href: '#experience', label: 'Experience', power: '9500' },
+  { href: '#projects', label: 'Projects', power: '10000' },
+  { href: '#skills', label: 'Skills', power: '8000' },
+  { href: '/blog', label: 'Blog', power: '7500' },
+  { href: '#contact', label: 'Contact', power: '9999' }
 ]
 
 export function Navigation() {
@@ -43,58 +44,103 @@ export function Navigation() {
   return (
     <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${
       scrolled 
-        ? 'bg-white/80 dark:bg-gray-900/80 backdrop-blur-lg border-b border-gray-200 dark:border-gray-800' 
-        : 'bg-transparent'
+        ? 'bg-gradient-to-r from-orange-500/90 via-orange-600/90 to-red-600/90 backdrop-blur-lg border-b-4 border-yellow-400 shadow-2xl' 
+        : 'bg-gradient-to-r from-orange-500/70 via-orange-600/70 to-red-600/70 backdrop-blur-md'
     }`}>
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      {/* DBZ Energy Aura Effect */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute -top-1 left-0 right-0 h-2 bg-gradient-to-r from-yellow-300 via-yellow-400 to-yellow-300 opacity-80 animate-pulse"></div>
+        <div className="absolute -bottom-1 left-0 right-0 h-2 bg-gradient-to-r from-blue-400 via-cyan-400 to-blue-400 opacity-60 animate-pulse"></div>
+      </div>
+      
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative">
         <div className="flex items-center justify-between h-16">
-          {/* Logo and Social Links */}
+          {/* Logo with DBZ Style */}
           <div className="flex items-center space-x-6">
-            <Link href="/" className="text-xl font-bold text-gray-900 dark:text-white">
-              Gana Teja
+            <Link href="/" className="group flex items-center space-x-2">
+              <motion.div
+                animate={{ rotate: 360 }}
+                transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                className="relative"
+              >
+                <Star className="h-8 w-8 text-yellow-400 fill-yellow-400" />
+                <span className="absolute inset-0 animate-ping">
+                  <Star className="h-8 w-8 text-yellow-300 opacity-50" />
+                </span>
+              </motion.div>
+              <span className="text-xl font-black text-white tracking-wider uppercase transform hover:scale-110 transition-transform">
+                GANA TEJA
+              </span>
+              <Zap className="h-5 w-5 text-yellow-300 animate-pulse" />
             </Link>
             
-            {/* Social Links in Header */}
+            {/* Social Links with DBZ Power Level */}
             <div className="hidden md:flex items-center space-x-3">
-              <a
+              <motion.a
                 href={personalInfo.github}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-2 text-gray-600 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
+                whileHover={{ scale: 1.2, rotate: 360 }}
+                className="p-2 text-yellow-300 hover:text-yellow-100 transition-colors relative group"
                 aria-label="GitHub Profile"
               >
-                <Github className="h-4 w-4" />
-              </a>
-              <a
+                <Github className="h-5 w-5" />
+                <span className="absolute -top-8 left-1/2 transform -translate-x-1/2 text-xs font-bold text-yellow-300 opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
+                  Power: 7000
+                </span>
+              </motion.a>
+              <motion.a
                 href={personalInfo.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-2 text-gray-600 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
+                whileHover={{ scale: 1.2, rotate: 360 }}
+                className="p-2 text-yellow-300 hover:text-yellow-100 transition-colors relative group"
                 aria-label="LinkedIn Profile"
               >
-                <Linkedin className="h-4 w-4" />
-              </a>
-              <a
+                <Linkedin className="h-5 w-5" />
+                <span className="absolute -top-8 left-1/2 transform -translate-x-1/2 text-xs font-bold text-yellow-300 opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
+                  Power: 6500
+                </span>
+              </motion.a>
+              <motion.a
                 href={`mailto:${personalInfo.email}`}
-                className="p-2 text-gray-600 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
+                whileHover={{ scale: 1.2, rotate: 360 }}
+                className="p-2 text-yellow-300 hover:text-yellow-100 transition-colors relative group"
                 aria-label="Email"
               >
-                <Mail className="h-4 w-4" />
-              </a>
+                <Mail className="h-5 w-5" />
+                <span className="absolute -top-8 left-1/2 transform -translate-x-1/2 text-xs font-bold text-yellow-300 opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
+                  Power: 8000
+                </span>
+              </motion.a>
             </div>
           </div>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
+          {/* Desktop Navigation with Power Levels */}
+          <div className="hidden md:flex items-center space-x-6">
             {navItems.map((item) => (
-              <Link
+              <motion.div
                 key={item.href}
-                href={item.href}
-                onClick={() => handleNavClick(item.href)}
-                className="text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors font-medium"
+                whileHover={{ scale: 1.1, y: -2 }}
+                className="relative group"
               >
-                {item.label}
-              </Link>
+                <Link
+                  href={item.href}
+                  onClick={() => handleNavClick(item.href)}
+                  className="text-white font-bold uppercase tracking-wider text-sm hover:text-yellow-300 transition-all duration-200 relative"
+                >
+                  {item.label}
+                  <motion.div
+                    className="absolute -bottom-1 left-0 right-0 h-0.5 bg-yellow-400 origin-left"
+                    initial={{ scaleX: 0 }}
+                    whileHover={{ scaleX: 1 }}
+                    transition={{ duration: 0.2 }}
+                  />
+                </Link>
+                <span className="absolute -top-6 left-1/2 transform -translate-x-1/2 text-[10px] font-bold text-cyan-300 opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
+                  ⚡ {item.power}
+                </span>
+              </motion.div>
             ))}
             <ThemeToggle />
           </div>
@@ -111,19 +157,30 @@ export function Navigation() {
           </div>
         </div>
 
-        {/* Mobile Navigation */}
+        {/* Mobile Navigation - DBZ Style */}
         {isOpen && (
-          <div className="md:hidden bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-800">
+          <motion.div 
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="md:hidden bg-gradient-to-b from-orange-600 to-red-700 border-t-4 border-yellow-400"
+          >
             <div className="px-2 pt-2 pb-3 space-y-1">
-              {navItems.map((item) => (
-                <Link
+              {navItems.map((item, index) => (
+                <motion.div
                   key={item.href}
-                  href={item.href}
-                  onClick={() => handleNavClick(item.href)}
-                  className="block px-3 py-2 text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-gray-50 dark:hover:bg-gray-800 rounded-md transition-colors"
+                  initial={{ opacity: 0, x: -50 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: index * 0.05 }}
                 >
-                  {item.label}
-                </Link>
+                  <Link
+                    href={item.href}
+                    onClick={() => handleNavClick(item.href)}
+                    className="flex justify-between items-center px-3 py-2 text-white font-bold uppercase hover:bg-yellow-400/20 rounded-md transition-all group"
+                  >
+                    <span>{item.label}</span>
+                    <span className="text-xs text-cyan-300">⚡{item.power}</span>
+                  </Link>
+                </motion.div>
               ))}
               
               {/* Mobile Social Links */}
@@ -155,7 +212,7 @@ export function Navigation() {
                 </a>
               </div>
             </div>
-          </div>
+          </motion.div>
         )}
       </div>
     </nav>
