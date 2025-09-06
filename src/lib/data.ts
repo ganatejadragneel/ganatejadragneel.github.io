@@ -33,7 +33,7 @@ export const experiences: Experience[] = [
   },
   {
     id: "jio",
-    company: "Reliance Jio Platforms Limited",
+    company: "Jio Platforms Limited - Coupon Management Team",
     position: "Software Engineer",
     period: "August 2022 – August 2023",
     description: [
