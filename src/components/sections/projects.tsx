@@ -3,7 +3,6 @@
 import { motion } from 'framer-motion'
 import { useState } from 'react'
 import { ExternalLink, Github, Calendar, Star } from 'lucide-react'
-import Image from 'next/image'
 import { projects } from '@/lib/data'
 
 const categories = ['All', 'Featured', 'AI/ML', 'Full-Stack', 'System Design']

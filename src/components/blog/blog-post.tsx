@@ -122,7 +122,7 @@ export function BlogPost({ post }: BlogPostProps) {
           <div className="prose prose-lg prose-gray dark:prose-invert max-w-none">
             <ReactMarkdown
               components={{
-                code({ node, inline, className, children, ...props }: any) {
+                code({ inline, className, children, ...props }: any) {
                   const match = /language-(\w+)/.exec(className || '')
                   return !inline && match ? (
                     <SyntaxHighlighter

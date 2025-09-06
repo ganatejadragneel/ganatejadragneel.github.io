@@ -116,11 +116,12 @@ Building systems at this scale taught me the importance of thinking beyond indiv
 ]
 
 interface PageProps {
-  params: { slug: string }
+  params: Promise<{ slug: string }>
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
-  const post = blogPosts.find(p => p.slug === params.slug)
+  const { slug } = await params
+  const post = blogPosts.find(p => p.slug === slug)
   
   if (!post) {
     return {
@@ -145,8 +146,9 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   }
 }
 
-export default function BlogPostPage({ params }: PageProps) {
-  const post = blogPosts.find(p => p.slug === params.slug)
+export default async function BlogPostPage({ params }: PageProps) {
+  const { slug } = await params
+  const post = blogPosts.find(p => p.slug === slug)
 
   if (!post || !post.published) {
     notFound()

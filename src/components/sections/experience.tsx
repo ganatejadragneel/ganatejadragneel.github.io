@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { Calendar, MapPin, Award, TrendingUp } from 'lucide-react'
+import { Calendar, Award, TrendingUp } from 'lucide-react'
 import { experiences } from '@/lib/data'
 
 export function ExperienceSection() {
